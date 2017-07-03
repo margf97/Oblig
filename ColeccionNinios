@@ -1,0 +1,33 @@
+import java.util.Calendar;
+
+public class ColeccionNinios {
+
+private	ninio [] arregloNinios;
+int tope=0;
+int maximoNinios =0;
+int maximoRegistros=0;
+
+public void configurar(int maximoNinios, int maximoRegistros)
+{
+	arregloNinios = new ninio[maximoNinios];
+}
+
+public void altaNinio(String Pnombre, int Pcedula, Calendar PfechNac, String PservMed, String PmedCab, boolean PtieneF, registro Preg)
+{
+	for (int i=0; i<tope; i++)
+	{
+		if (arregloNinios[i] == Pcedula)
+		{
+			System.out.println("ERROR - Este niño ya existe en el sistema.");
+		}
+	}
+	if(arregloNinios.tope == arregloNinios.maximoNinios)
+	{
+		System.out.println("ERROR - No hay lugar para agregar mas niños al sistema.");
+	}
+	private registro [maximoRegistros] registroNinio = new registro
+	ninio nuevoNinio = new ninio(Pnombre, Pcedula, PfechaNac, PservMed, PmedCab, PmedCab, PtieneF, Preg);
+	arregloNinios[tope] = nuevoNinio;
+	tope++;
+}
+}
