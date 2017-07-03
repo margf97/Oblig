@@ -1,0 +1,125 @@
+import java.util.Calendar;
+
+public class ninio {
+
+	
+	////////////////////////Atributos
+private String nombre;
+private int cedula;
+private Calendar fechaNacimiento;
+private String servicioMedico;
+private String medicoCabecera;
+private boolean tieneFonasa;
+private registro [] registros; //ME FALTA ALGO
+private int cantRegistrosIngresados;
+
+/////////////////////Constructores
+public ninio(String Pnombre, int Pcedula, Calendar PfechNac, String PservMed, String PmedCab, boolean PtieneF, registro Preg)
+{
+	this.nombre = Pnombre;
+	this.cedula = Pcedula;
+	this.fechaNacimiento = PfechNac;
+	this.servicioMedico = PservMed;
+	this.medicoCabecera = PmedCab;
+	this.tieneFonasa = PtieneF;
+	this.registros = Preg; //SAME anterior
+	this.cantRegistrosIngresados = 0;
+	
+}
+public ninio(String Pnombre, int Pcedula, Calendar PfechNac, String PservMed, String PmedCab, boolean PtieneF)
+{
+	this.nombre = Pnombre;
+	this.cedula = Pcedula;
+	this.fechaNacimiento = PfechNac;
+	this.servicioMedico = PservMed;
+	this.medicoCabecera = PmedCab;
+	this.tieneFonasa = PtieneF;
+	this.registros = null;
+	this.cantRegistrosIngresados = 0;
+}
+//GETTERS AND SETTERS
+public String getNombre()
+{
+	return this.nombre;
+}
+public int getCedula()
+{
+	return this.cedula;
+}
+public Calendar getFechaNac()
+{
+	return this.fechaNacimiento;
+}
+public String getMedicoCab()
+{
+	return this.medicoCabecera;
+}
+public boolean getFonasa()
+{
+	return this.tieneFonasa;
+}
+public int getRegistros()
+{
+	return this.cantRegistrosIngresados;
+}
+public void setNombre(String pNombre)
+{
+	this.nombre = pNombre;
+}
+public void setCedula(int pCedula)
+{
+	this.cedula = pCedula;
+}
+public void setFechaN(Calendar pFechaN)
+{
+	this.fechaNacimiento = pFechan;
+}
+public void setMedico(String pMedico)
+{
+	this.medicoCabecera = pMedico;
+}
+public void setFonasa(boolean pFonasa)
+{
+	this.tieneFonasa = pFonasa;
+}
+public void setRegistros(int pRegistros)
+{
+	this.cantRegistrosIngresados = pRegistros;
+}
+
+public int calcularEdad()
+{
+	int cuantosAnios =0;
+	Calendar hoyCopy = nacimiento.add(Calendar.YEAR, 1);
+	while(hoyCopy.before(hoy))
+	{
+		cuantosAnios++;
+		hoyCopy.add(Calendar.YEAR,1);
+	}
+	System.out.println("Tiene:"+" años.");
+}
+
+public agregarRegistro(Registro nuevoReg)
+{
+	arreglo[cantRegistrosIngresados] = nuevoReg;
+	cantRegistrosIngresados ++;
+}
+
+public void datosNinio()
+{
+	System.out.println(("El nombre del niño es:"+nombre));
+	System.out.println("La cedula es:"+cedula);
+	System.out.println("La fecha de nacimiento es:"+this.fechaNacimiento);
+	System.out.println("El servicio medico con el que cuenta es:"+this.servicioMedico);
+	if (this.tieneFonasa == true)
+	{
+		System.out.println("Tiene fonasa.");
+	}
+	else
+		System.out.println("No tiene fonasa.");
+	System.out.println("Su medico de cabecera es:"+this.medicoCabecera);
+	//PREGUNTAR SI ES NECESARIO IMPRIMIR LOS REGISTROS
+	
+}
+}
+
