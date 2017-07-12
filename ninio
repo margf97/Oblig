@@ -10,11 +10,11 @@ public class Ninio {
 	private String servicioMedico;
 	private String medicoCabecera;
 	private boolean tieneFonasa;
-	private Registro [] registros; //ME FALTA ALGO
+	private Registro registros[]; //ME FALTA ALGO
 	private int cantRegistrosIngresados;
 
 	/////////////////////Constructores
-	public Ninio(String Pnombre, int Pcedula, Calendar PfechNac, String PservMed, String PmedCab, boolean PtieneF, registro Preg)
+	public Ninio(String Pnombre, int Pcedula, Calendar PfechNac, String PservMed, String PmedCab, boolean PtieneF, Registro Preg)
 	{
 		this.nombre = Pnombre;
 		this.cedula = Pcedula;
@@ -102,18 +102,18 @@ public class Ninio {
 			cuantosAnios++;
 			añoNacimiento.add(Calendar.YEAR,1);
 		}
-		System.out.println("Tiene:"+cuantosAnios+" años.");
+		return cuantosAnios;
 	}
 
-	public agregarRegistro(Registro nuevoReg)
+	public void agregarRegistro(Registro nuevoReg)
 	{
-		arreglo[cantRegistrosIngresados] = nuevoReg;
+		registros[cantRegistrosIngresados] = nuevoReg;
 		cantRegistrosIngresados ++;
 	}
 
 	public void datosNinio()
 	{
-		System.out.println(("El nombre del niño es:"+nombre));
+		System.out.println(("El nombre del niño es:"+nombre));//TODO ESTO NO VA HAY QUE IMPRIMIRLO EN VENTANA
 		System.out.println("La cedula es:"+cedula);
 		System.out.println("La fecha de nacimiento es:"+this.fechaNacimiento);
 		System.out.println("El servicio medico con el que cuenta es:"+this.servicioMedico);
@@ -122,10 +122,11 @@ public class Ninio {
 			System.out.println("Tiene fonasa.");
 		}
 		else
-			System.out.println("No tiene fonasa.");
+			System.out.println("No tiene fonasa.");//TODO ESTO NO VA HAY QUE IMPRIMIRLO EN VENTANA
 		System.out.println("Su medico de cabecera es:"+this.medicoCabecera);
 		//PREGUNTAR SI ES NECESARIO IMPRIMIR LOS REGISTROS
 		
 	}
+	
 }
 
