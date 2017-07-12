@@ -1,0 +1,38 @@
+package obligatorio;
+import java.util.Calendar;
+
+public abstract class Registro {
+
+	Calendar fecha;
+	String comentario;
+	
+	public Registro (Calendar pFecha, String pComentario)
+	{
+		this.fecha = pFecha;
+		this.comentario = pComentario;
+	}
+	
+	public Calendar getFecha()
+	{
+		return this.fecha;
+	}
+	
+	public String getComentario()
+	{
+		return this.comentario;
+	}
+	
+	public void setFecha(Calendar pFecha)
+	{
+		this.fecha = pFecha;
+	}
+	
+	public void setComentario(String pComentario)
+	{
+		this.comentario = pComentario;
+	}
+	
+	public abstract String dadoUnRegistro(Registro pReg);//se puede recibir un parametro en un metodo abstracto?
+	
+	
+}
