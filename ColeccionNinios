@@ -1,33 +1,80 @@
+package obligatorio;
 import java.util.Calendar;
 
 public class ColeccionNinios {
 
-private	ninio [] arregloNinios;
-int tope=0;
-int maximoNinios =0;
-int maximoRegistros=0;
 
-public void configurar(int maximoNinios, int maximoRegistros)
-{
-	arregloNinios = new ninio[maximoNinios];
-}
+	private	Ninio [] arregloNinios;
+	int tope = 0;
+	int maximoNinios = 0;
+	int maximoRegistros = 0;
+	
 
-public void altaNinio(String Pnombre, int Pcedula, Calendar PfechNac, String PservMed, String PmedCab, boolean PtieneF, registro Preg)
-{
-	for (int i=0; i<tope; i++)
+	public void configurar(int maximoNinios, int pMaximoRegistros)
 	{
-		if (arregloNinios[i] == Pcedula)
+		arregloNinios = new Ninio[maximoNinios];
+		this.maximoRegistros = pMaximoRegistros;
+	}
+
+	public int buscarNiño (int pCi)
+	{
+		int j=0;
+		boolean esta = false;
+		while ((j<tope) && (esta == false))
 		{
-			System.out.println("ERROR - Este niño ya existe en el sistema.");
+			if (arregloNinios[j].getCedula() == pCi)
+			{
+				esta = true;
+			}
+			else
+			{
+				j++;
+			}
+		}
+		if ((j == tope) && (esta == false))
+		{
+			j= -1;
+		}
+		return j;
+	}
+
+
+	public void altaNinio(String Pnombre, int Pcedula, Calendar PfechNac, String PservMed, String PmedCab, boolean PtieneF)
+	{
+
+		if (buscarNiño(Pcedula) == -1)
+		{
+			if (tope < maximoNinios)
+			{
+				Registro arreg[] = new Registro [maximoRegistros];
+				Ninio nuevoNinio = new Ninio(Pnombre, Pcedula, PfechNac, PservMed, PmedCab, PtieneF, arreg, 0);
+				arregloNinios[tope] = nuevoNinio;
+				tope++;
+			}
+			else
+			{
+				System.out.println("No hay lugar para ingresar otro niño");
+			}
+		}
+		else
+		{
+			System.out.println("El niño que esta intentando ingresar ya existe");
 		}
 	}
-	if(arregloNinios.tope == arregloNinios.maximoNinios)
-	{
-		System.out.println("ERROR - No hay lugar para agregar mas niños al sistema.");
-	}
-	private registro [maximoRegistros] registroNinio = new registro
-	ninio nuevoNinio = new ninio(Pnombre, Pcedula, PfechaNac, PservMed, PmedCab, PmedCab, PtieneF, Preg);
-	arregloNinios[tope] = nuevoNinio;
-	tope++;
+
+public String[] listarNinios()
+{
+	
 }
 }
+
+
+
+
+
+
+
+
+
+
+
