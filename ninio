@@ -1,132 +1,74 @@
-package obligatorio;
+ipackage obligatorio;
 import java.util.Calendar;
 
-public class Ninio {
+public class ColeccionNinios {
 
-		////////////////////////Atributos
-	private String nombre;
-	private int cedula;
-	private Calendar fechaNacimiento;
-	private String servicioMedico;
-	private String medicoCabecera;
-	private boolean tieneFonasa;
-	private Registro registros[]; //ME FALTA ALGO
-	private int cantRegistrosIngresados;
 
-	/////////////////////Constructores
-	public Ninio(String Pnombre, int Pcedula, Calendar PfechNac, String PservMed, String PmedCab, boolean PtieneF, Registro Preg)
+	private	Ninio [] arregloNinios;
+	int tope = 0;
+	int maximoNinios = 0;
+	int maximoRegistros = 0;
+	private Registro [] registroNinio;
+
+	public void configurar(int maximoNinios, int pMaximoRegistros)
 	{
-		this.nombre = Pnombre;
-		this.cedula = Pcedula;
-		this.fechaNacimiento = PfechNac;
-		this.servicioMedico = PservMed;
-		this.medicoCabecera = PmedCab;
-		this.tieneFonasa = PtieneF;
-		this.registros = Preg; //SAME anterior
-		this.cantRegistrosIngresados = 0;
-		
-	}
-	public Ninio(String Pnombre, int Pcedula, Calendar PfechNac, String PservMed, String PmedCab, boolean PtieneF)
-	{
-		this.nombre = Pnombre;
-		this.cedula = Pcedula;
-		this.fechaNacimiento = PfechNac;
-		this.servicioMedico = PservMed;
-		this.medicoCabecera = PmedCab;
-		this.tieneFonasa = PtieneF;
-		this.registros = null;
-		this.cantRegistrosIngresados = 0;
-	}
-	//GETTERS AND SETTERS
-	public String getNombre()
-	{
-		return this.nombre;
-	}
-	public int getCedula()
-	{
-		return this.cedula;
-	}
-	public Calendar getFechaNac()
-	{
-		return this.fechaNacimiento;
-	}
-	public String getMedicoCab()
-	{
-		return this.medicoCabecera;
-	}
-	public boolean getFonasa()
-	{
-		return this.tieneFonasa;
-	}
-	public int getRegistros()
-	{
-		return this.cantRegistrosIngresados;
-	}
-	public void setNombre(String pNombre)
-	{
-		this.nombre = pNombre;
-	}
-	public void setCedula(int pCedula)
-	{
-		this.cedula = pCedula;
-	}
-	public void setFechaN(Calendar pFechaN)
-	{
-		this.fechaNacimiento = pFechaN;
-	}
-	public void setMedico(String pMedico)
-	{
-		this.medicoCabecera = pMedico;
-	}
-	public void setFonasa(boolean pFonasa)
-	{
-		this.tieneFonasa = pFonasa;
-	}
-	public void setRegistros(int pRegistros)
-	{
-		this.cantRegistrosIngresados = pRegistros;
+		arregloNinios = new Ninio[maximoNinios];
+		this.maximoRegistros = pMaximoRegistros;
 	}
 
-	public int calcularEdad()
+	public int buscarNiño (int pCi)
 	{
-		Calendar fecha = Calendar.getInstance();
-		int hoy = fecha.get(Calendar.DAY_OF_MONTH);
-		Calendar nacimiento = Calendar.getInstance();
-        nacimiento.set(Calendar.YEAR, 2000);
-        nacimiento.set(Calendar.MONTH, 4);
-        nacimiento.set(Calendar.DAY_OF_MONTH, 20);
-		int cuantosAnios =0;
-		Calendar añoNacimiento = fechaNacimiento.getInstance();
-		while(añoNacimiento.before(añoNacimiento))
+		int j=0;
+		boolean esta = false;
+		while ((j<tope) && (esta == false))
 		{
-			cuantosAnios++;
-			añoNacimiento.add(Calendar.YEAR,1);
+			if (arregloNinios[j].getCedula() == pCi)
+			{
+				esta = true;
+			}
+			else
+			{
+				j++;
+			}
 		}
-		return cuantosAnios;
-	}
-
-	public void agregarRegistro(Registro nuevoReg)
-	{
-		registros[cantRegistrosIngresados] = nuevoReg;
-		cantRegistrosIngresados ++;
-	}
-
-	public void datosNinio()
-	{
-		System.out.println(("El nombre del niño es:"+nombre));//TODO ESTO NO VA HAY QUE IMPRIMIRLO EN VENTANA
-		System.out.println("La cedula es:"+cedula);
-		System.out.println("La fecha de nacimiento es:"+this.fechaNacimiento);
-		System.out.println("El servicio medico con el que cuenta es:"+this.servicioMedico);
-		if (this.tieneFonasa == true)
+		if ((j == tope) && (esta == false))
 		{
-			System.out.println("Tiene fonasa.");
+			j= -1;
+		}
+		return j;
+	}
+
+
+	public void altaNinio(String Pnombre, int Pcedula, Calendar PfechNac, String PservMed, String PmedCab, boolean PtieneF)
+	{
+
+		if (buscarNiño(Pcedula) == -1)
+		{
+			if (tope < maximoNinios)
+			{
+				this.registroNinio = new Registro [maximoRegistros];
+				Ninio nuevoNinio = new Ninio(Pnombre, Pcedula, PfechNac, PservMed, PmedCab, PtieneF);
+				arregloNinios[tope] = nuevoNinio;
+				tope++;
+			}
+			else
+			{
+				System.out.println("No hay lugar para ingresar otro niño");
+			}
 		}
 		else
-			System.out.println("No tiene fonasa.");//TODO ESTO NO VA HAY QUE IMPRIMIRLO EN VENTANA
-		System.out.println("Su medico de cabecera es:"+this.medicoCabecera);
-		//PREGUNTAR SI ES NECESARIO IMPRIMIR LOS REGISTROS
-		
+		{
+			System.out.println("El niño que esta intentando ingresar ya existe");
+		}
 	}
+
+public String[] listarNinios()
+{
 	
 }
+}
+
+
+
+
 
