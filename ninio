@@ -35,7 +35,7 @@ public class Ninio {
 		this.servicioMedico = PservMed;
 		this.medicoCabecera = PmedCab;
 		this.tieneFonasa = PtieneF;
-		this.registros = null; //preguntar si en este segundo constructor hay que pasarle el largo al arregloy inicializar todo en null
+		this.registros = null; 
 		this.cantRegistrosIngresados = 0;
 	}
 	//GETTERS AND SETTERS
@@ -112,22 +112,13 @@ public class Ninio {
 		cantRegistrosIngresados ++;
 	}
 
-	public void datosNinio()
+	public String datosNinio(int pCi)
 	{
-		System.out.println(("El nombre del niño es:"+nombre));//TODO ESTO NO VA HAY QUE IMPRIMIRLO EN VENTANA
-		System.out.println("La cedula es:"+cedula);
-		System.out.println("La fecha de nacimiento es:"+this.fechaNacimiento);
-		System.out.println("El servicio medico con el que cuenta es:"+this.servicioMedico);
-		if (this.tieneFonasa == true)
-		{
-			System.out.println("Tiene fonasa.");
-		}
-		else
-			System.out.println("No tiene fonasa.");//TODO ESTO NO VA HAY QUE IMPRIMIRLO EN VENTANA
-		System.out.println("Su medico de cabecera es:"+this.medicoCabecera);
-		//PREGUNTAR SI ES NECESARIO IMPRIMIR LOS REGISTROS
+		String datos =(this.getNombre()+this.getCedula()+this.getFechaNac()+this.getMedicoCab()+this.getFonasa()+this.getRegistros());
+		return datos;
 		
 	}
 	
 }
+
 
