@@ -10,10 +10,11 @@ public class ColeccionNinios {
 	int maximoRegistros = 0;
 	
 
-	public void configurar(int maximoNinios, int pMaximoRegistros)
+	public void configurar(int pMaximoNinios, int pMaximoRegistros)
 	{
 		arregloNinios = new Ninio[maximoNinios];
 		this.maximoRegistros = pMaximoRegistros;
+		maximoNinios = pMaximoNinios;
 	}
 
 	public int buscarNiño (int pCi)
@@ -39,33 +40,43 @@ public class ColeccionNinios {
 	}
 
 
-	public void altaNinio(String Pnombre, int Pcedula, Calendar PfechNac, String PservMed, String PmedCab, boolean PtieneF)
+	public void altaNinio(Ninio n)
 	{
 
-		if (buscarNiño(Pcedula) == -1)
+		if (buscarNiño(n.getCedula()) == -1)
 		{
 			if (tope < maximoNinios)
 			{
 				Registro arreg[] = new Registro [maximoRegistros];
-				Ninio nuevoNinio = new Ninio(Pnombre, Pcedula, PfechNac, PservMed, PmedCab, PtieneF, arreg, 0);
-				arregloNinios[tope] = nuevoNinio;
+				//Ninio nuevoNinio = new Ninio(Pnombre, Pcedula, PfechNac, PservMed, PmedCab, PtieneF, arreg, 0);
+				arregloNinios[tope] = n;
 				tope++;
 			}
 			else
 			{
-				System.out.println("No hay lugar para ingresar otro niño");
+				System.out.println("No hay lugar para ingresar otro niño");//Cambiar
 			}
 		}
 		else
 		{
-			System.out.println("El niño que esta intentando ingresar ya existe");
+			System.out.println("El niño que esta intentando ingresar ya existe");//Cambiar
 		}
 	}
 
+
 public String[] listarNinios()
 {
-	
+	String[] arregloDatos = new String[tope];
+	String dato;
+
+	for (int i=0; i<tope; i++)
+	{
+		dato = (arregloNinios[i].getNombre()+" "+arregloNinios[i].getCedula()+arregloNinios[i].getMedicoCab()+arregloNinios[i].getFechaNac()+arregloNinios[i].getFonasa());
+		arregloDatos[i] = dato;
+	}
+	return arregloDatos;
 }
+
 }
 
 
