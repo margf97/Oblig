@@ -1,0 +1,42 @@
+package obligatorio;
+import java.util.Calendar;
+
+public class Consulta extends Registro {
+	public Consulta(Calendar pFecha, String pComentario) {
+		super(pFecha, pComentario);
+		// TODO Auto-generated constructor stub
+	}
+	private String Medico;
+	private String Diagnostico;
+	private String Recomendaciones;
+
+	public Consulta(Calendar pFecha, String pComentario, String medico, String diagnostico, String recomendaciones) {
+		super(pFecha, pComentario);
+		Medico = medico;
+		Diagnostico = diagnostico;
+		Recomendaciones = recomendaciones;
+	}
+	public String getMedico() {
+		return Medico;
+	}
+	public void setMedico(String medico) {
+		Medico = medico;
+	}
+	public String getDiagnostico() {
+		return Diagnostico;
+	}
+	public void setDiagnostico(String diagnostico) {
+		Diagnostico = diagnostico;
+	}
+	public String getRecomendaciones() {
+		return Recomendaciones;
+	}
+	public void setRecomendaciones(String recomendaciones) {
+		Recomendaciones = recomendaciones;
+	}
+	@Override
+	public String dadoUnRegistro(Registro pReg) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+}
