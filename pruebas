@@ -1,0 +1,17 @@
+package obligatorio;
+import java.util.Calendar;
+
+public class Pruebas {
+
+	public static void main(String[] args) {
+		Calendar fecha =Calendar.getInstance();
+		fecha.set(2011, 0, 2);
+		Ninio N = new Ninio("Pepito", 123456, fecha, "Mutual", "Jorge", true);
+		ColeccionNinios col = new ColeccionNinios();
+		col.configurar(3, 3);
+		col.altaNinio(N);
+		col.listarNinios();
+		
+	}
+
+}
