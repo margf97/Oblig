@@ -1,0 +1,43 @@
+package obligatorio;
+import java.util.Calendar;
+
+public class vacuna extends Registro {
+
+	private String Nombre;
+	private int Dosis;
+	private boolean Obligatoria;
+	
+	public vacuna(Calendar pFecha, String pComentario, String nombre, int dosis, boolean obligatoria) 
+	{
+		super(pFecha, pComentario);
+		Nombre = nombre;
+		Dosis = dosis;
+		Obligatoria = obligatoria;
+	}
+
+	//getters y setters
+	public String getNombre() {
+		return Nombre;}
+
+	public void setNombre(String nombre) {
+		Nombre = nombre;
+	}
+
+	public int getDosis() {
+		return Dosis;}
+
+	public void setDosis(int dosis) {
+		Dosis = dosis;}
+
+	public boolean isObligatoria() {
+		return Obligatoria;}
+
+	public void setObligatoria(boolean obligatoria) {
+		Obligatoria = obligatoria;}
+
+	@Override
+	public String dadoUnRegistro(Registro pReg) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+}
