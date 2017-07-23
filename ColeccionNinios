@@ -8,16 +8,16 @@ public class ColeccionNinios {
 	int tope = 0;
 	int maximoNinios = 0;
 	int maximoRegistros = 0;
-	
+
 
 	public void configurar(int pMaximoNinios, int pMaximoRegistros)
 	{
+		this.maximoNinios = pMaximoNinios;
 		arregloNinios = new Ninio[maximoNinios];
 		this.maximoRegistros = pMaximoRegistros;
-		maximoNinios = pMaximoNinios;
 	}
 
-	public int buscarNiño (int pCi)
+	public int buscarNiño (int pCi)//Recibe una cedula como parametro y la busca en cada niño del arreglo, si la encuentra devuelvue el lugar del arreglo en donde esta el niño, sino devuelve -1
 	{
 		int j=0;
 		boolean esta = false;
@@ -34,13 +34,27 @@ public class ColeccionNinios {
 		}
 		if ((j == tope) && (esta == false))
 		{
-			j= -1;
+			j = -1;
 		}
 		return j;
 	}
 
+	public boolean estaIngresado(int pCedula)//Recibe una cedula por parametro invoca al metodo buscar niño y solo devuelve si este esta ingresado en el arreglo de niños o no.
+	{
+		boolean estaIngresado = false;
+		if (buscarNiño(pCedula) == -1)
+		{
+			estaIngresado = false;
+		}
+		else
+		{
+			estaIngresado = true;
+		}
+		return estaIngresado;
+	}
+	
 
-	public void altaNinio(Ninio n)
+	public void altaNinio(Ninio n)//Recibe un niño por parametro, lo busca en el arreglo, se fija si hay lugar para un nuevo niño  y luego lo ingresa.
 	{
 
 		if (buscarNiño(n.getCedula()) == -1)
@@ -64,20 +78,45 @@ public class ColeccionNinios {
 	}
 
 
-public String[] listarNinios()
-{
-	String[] arregloDatos = new String[tope];
-	String dato;
-
-	for (int i=0; i<tope; i++)
+	public String[] listarNinios() //Carga todos los datos de cada niño en un String y ese String lo agrega a un arreglo, luego lo muestra en una lista
 	{
-		dato = (arregloNinios[i].getNombre()+" "+arregloNinios[i].getCedula()+arregloNinios[i].getMedicoCab()+arregloNinios[i].getFechaNac()+arregloNinios[i].getFonasa());
-		arregloDatos[i] = dato;
+		String[] arregloDatos = new String[tope];
+		String dato;
+
+		for (int i=0; i<tope; i++)
+		{
+			dato = (arregloNinios[i].getNombre()+" "+arregloNinios[i].getCedula()+arregloNinios[i].getMedicoCab()+arregloNinios[i].getFechaNac()+arregloNinios[i].getFonasa());
+			arregloDatos[i] = dato;
+			System.out.println(arregloNinios[i].getNombre()+" "+arregloNinios[i].getCedula()+" "+arregloNinios[i].getMedicoCab()+" "+arregloNinios[i].getFonasa());//para prueba NO TIENE LA FECHA
+		}
+		return arregloDatos;
 	}
-	return arregloDatos;
-}
+
+	public void altaRegistro(Registro r, int pCedula)//Recibe un registro por parametro y una cedula, invoca al metodo altaRegistro y lo ingresa en el arreglo de registros del niño con dicha cedula
+	{
+		int niño;
+		niño = buscarNiño(pCedula); 
+		arregloNinios[niño].agregarRegistro(r); 
+	}
+	
+	public Ninio getDatosNiño (int pCedula)
+	{
+		int niño;
+		String datosNiño;
+		niño = buscarNiño(pCedula);
+		return arregloNinios[niño];
+	}
 
 }
+
+
+
+
+
+
+
+
+
 
 
 
